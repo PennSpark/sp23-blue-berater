@@ -16,8 +16,7 @@ function TaskPage() {
       }
 
   function toggleComplete(id) {
-    setTodos(
-      todos.map((todo) => {
+    const updatedDailyTodos = dailyTodos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -25,13 +24,29 @@ function TaskPage() {
           };
         }
         return todo;
-      })
-    );
+      });
+      const updatedWeeklyTodos = weeklyTodos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      });
+
+    setDailyTodos(updatedDailyTodos);
+    setWeeklyTodos(updatedWeeklyTodos);
   }
 
-  function removeTodo(id) {
-    const newTodos = todos.filter((item) => item.id !== id);
-    setTodos(newTodos);
+  function removeDailyTodo(id) {
+    const newTodos = dailyTodos.filter((item) => item.id !== id);
+    setDailyTodos(newTodos);
+  }
+
+  function removeWeeklyTodo(id) {
+    const newTodos = weeklyTodos.filter((item) => item.id !== id);
+    setWeeklyTodos(newTodos);
   }
 
   return (
@@ -39,22 +54,22 @@ function TaskPage() {
         <View>
             <View>
                 <Text>Daily Tasks</Text>
-                <TodoForm addTodo={addTodo} />
+                <TodoForm addTodo={addDailyTodo} />
             </View>
             <TodoList
-                todos={todos}
-                removeTodo={removeTodo}
+                todos={dailyTodos}
+                removeTodo={removeDailyTodo}
                 toggleComplete={toggleComplete}
             />
       </View>
       <View>
             <View>
                 <Text>Weekly Tasks</Text>
-                <TodoForm addTodo={addTodo} />
+                <TodoForm addTodo={addWeeklyTodo} />
             </View>
             <TodoList
-                todos={todos}
-                removeTodo={removeTodo}
+                todos={weeklyTodos}
+                removeTodo={removeWeeklyTodo}
                 toggleComplete={toggleComplete}
             />
       </View>
