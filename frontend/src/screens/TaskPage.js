@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, View, Text } from "react-native";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
+import {SafeAreaView, View, Text } from "react-native";
+import TodoForm from "../components/TodoForm";
+import TodoList from "../components/TodoList";
 
-function App() {
+function TaskPage() {
   const [todos, setTodos] = useState([]);
 
   function addTodo(todo) {
@@ -30,35 +30,31 @@ function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>React Todo</Text>
-        <TodoForm addTodo={addTodo} />
+    <SafeAreaView>
+        <View>
+            <View>
+                <Text>Daily Tasks</Text>
+                <TodoForm addTodo={addTodo} />
+            </View>
+            <TodoList
+                todos={todos}
+                removeTodo={removeTodo}
+                toggleComplete={toggleComplete}
+            />
       </View>
-      <TodoList
-        todos={todos}
-        removeTodo={removeTodo}
-        toggleComplete={toggleComplete}
-      />
+      <View>
+            <View>
+                <Text>Weekly Tasks</Text>
+                <TodoForm addTodo={addTodo} />
+            </View>
+            <TodoList
+                todos={todos}
+                removeTodo={removeTodo}
+                toggleComplete={toggleComplete}
+            />
+      </View>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  header: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-});
-
-export default App;
+export default TaskPage;

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-function Todo({ todo, toggleComplete, removeTodo }) {
+function TodoItem({ todo, toggleComplete, removeTodo }) {
   function handleCheckboxClick() {
     toggleComplete(todo.id);
   }
@@ -23,4 +23,4 @@ function Todo({ todo, toggleComplete, removeTodo }) {
   );
 }
 
-export default Todo;
+export default TodoItem;

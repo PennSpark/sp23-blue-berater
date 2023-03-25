@@ -1,11 +1,11 @@
 import React from "react";
 import { FlatList } from "react-native";
-import Todo from "./Todo";
+import TodoItem from "../components/TodoItem";
 
 function TodoList({ todos, toggleComplete, removeTodo }) {
   function renderItem({ item }) {
     return (
-      <Todo
+      <TodoItem
         todo={item}
         removeTodo={removeTodo}
         toggleComplete={toggleComplete}
