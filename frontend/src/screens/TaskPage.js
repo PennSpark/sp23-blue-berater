@@ -4,11 +4,16 @@ import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 
 function TaskPage() {
-  const [todos, setTodos] = useState([]);
-
-  function addTodo(todo) {
-    setTodos([todo, ...todos]);
-  }
+    const [dailyTodos, setDailyTodos] = useState([]);
+    const [weeklyTodos, setWeeklyTodos] = useState([]);
+    
+    function addDailyTodo(todo) {
+        setDailyTodos([todo, ...dailyTodos]);
+      }
+    
+      function addWeeklyTodo(todo) {
+        setWeeklyTodos([todo, ...weeklyTodos]);
+      }
 
   function toggleComplete(id) {
     setTodos(
