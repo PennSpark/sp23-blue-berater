@@ -10,26 +10,16 @@
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
-<<<<<<< HEAD
     "@react-navigation/native-stack": "^6.9.12",
-=======
-    "@react-navigation/stack": "^6.3.16",
->>>>>>> 7955ff8354ee013e23cce148959d44768f13b26e
     "@rneui/base": "github:react-native-elements/react-native-elements#base",
     "@rneui/themed": "github:react-native-elements/react-native-elements#themed",
     "expo": "~48.0.9",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
     "react-native": "0.71.4",
-<<<<<<< HEAD
     "react-native-elements": "^3.4.3",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0"
-=======
-    "react-native-safe-area-context": "4.5.0",
-    "react-native-screens": "~3.20.0",
-    "react-navigation": "^4.4.4"
->>>>>>> 7955ff8354ee013e23cce148959d44768f13b26e
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
