@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import {SafeAreaView, View, Text } from "react-native";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
+import CurrentDate from "../components/CurrentDate";
+import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
+
 
 function TaskPage() {
     const [dailyTodos, setDailyTodos] = useState([]);
@@ -51,28 +54,33 @@ function TaskPage() {
 
   return (
     <SafeAreaView>
-        <View>
-            <View>
-                <Text>Daily Tasks</Text>
-                <TodoForm addTodo={addDailyTodo} />
-            </View>
-            <TodoList
-                todos={dailyTodos}
-                removeTodo={removeDailyTodo}
-                toggleComplete={toggleComplete}
-            />
-      </View>
-      <View>
-            <View>
-                <Text>Weekly Tasks</Text>
-                <TodoForm addTodo={addWeeklyTodo} />
-            </View>
-            <TodoList
-                todos={weeklyTodos}
-                removeTodo={removeWeeklyTodo}
-                toggleComplete={toggleComplete}
-            />
-      </View>
+      <CurrentDate></CurrentDate>
+      <Collapse>
+            <CollapseHeader>
+                  <Text>Daily Tasks</Text>
+                  <TodoForm addTodo={addDailyTodo} />
+            </CollapseHeader>
+            <CollapseBody>
+              <TodoList
+                  todos={dailyTodos}
+                  removeTodo={removeDailyTodo}
+                  toggleComplete={toggleComplete}
+              />
+            </CollapseBody>
+        </Collapse>
+        <Collapse>
+              <CollapseHeader>
+                  <Text>Weekly Tasks</Text>
+                  <TodoForm addTodo={addWeeklyTodo} />
+              </CollapseHeader>
+              <CollapseBody>
+                <TodoList
+                    todos={weeklyTodos}
+                    removeTodo={removeWeeklyTodo}
+                    toggleComplete={toggleComplete}
+                />
+              </CollapseBody>
+      </Collapse>
     </SafeAreaView>
   );
 }
