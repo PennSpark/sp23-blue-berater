@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import {SafeAreaView, View, Text } from "react-native";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
+import CurrentDate from "../components/CurrentDate";
+import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
+
 
 function TaskPage() {
     const [dailyTodos, setDailyTodos] = useState([]);
@@ -49,48 +52,35 @@ function TaskPage() {
     setWeeklyTodos(newTodos);
   }
 
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-  var day = daysOfWeek[new Date().getDay()];
-  var date = new Date().getDate();
-  var month = months[new Date().getMonth()];
-
-  function getOrdinal(date) {
-    if (date > 3 && date < 21) return 'th';
-    switch (date % 10) {
-      case 1:  return "st";
-      case 2:  return "nd";
-      case 3:  return "rd";
-      default: return "th";
-    }
-  }
-
   return (
     <SafeAreaView>
-      <Text>{day}, {month} {date}{getOrdinal(date)}</Text>
-        <View>
-            <View>
-                <Text>Daily Tasks</Text>
-                <TodoForm addTodo={addDailyTodo} />
-            </View>
-            <TodoList
-                todos={dailyTodos}
-                removeTodo={removeDailyTodo}
-                toggleComplete={toggleComplete}
-            />
-      </View>
-      <View>
-            <View>
-                <Text>Weekly Tasks</Text>
-                <TodoForm addTodo={addWeeklyTodo} />
-            </View>
-            <TodoList
-                todos={weeklyTodos}
-                removeTodo={removeWeeklyTodo}
-                toggleComplete={toggleComplete}
-            />
-      </View>
+      <CurrentDate></CurrentDate>
+      <Collapse>
+            <CollapseHeader>
+                  <Text>Daily Tasks</Text>
+                  <TodoForm addTodo={addDailyTodo} />
+            </CollapseHeader>
+            <CollapseBody>
+              <TodoList
+                  todos={dailyTodos}
+                  removeTodo={removeDailyTodo}
+                  toggleComplete={toggleComplete}
+              />
+            </CollapseBody>
+        </Collapse>
+        <Collapse>
+              <CollapseHeader>
+                  <Text>Weekly Tasks</Text>
+                  <TodoForm addTodo={addWeeklyTodo} />
+              </CollapseHeader>
+              <CollapseBody>
+                <TodoList
+                    todos={weeklyTodos}
+                    removeTodo={removeWeeklyTodo}
+                    toggleComplete={toggleComplete}
+                />
+              </CollapseBody>
+      </Collapse>
     </SafeAreaView>
   );
 }
