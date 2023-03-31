@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import {SafeAreaView, View, Text } from "react-native";
+import {SafeAreaView, View, Text, Button } from "react-native";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
 import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
+import { useNavigation } from '@react-navigation/native';
+import { Icon } from '@rneui/themed';
 
 
 function TaskPage() {
     const [dailyTodos, setDailyTodos] = useState([]);
     const [weeklyTodos, setWeeklyTodos] = useState([]);
-    
+    const navigation = useNavigation();
+
     function addDailyTodo(todo) {
         setDailyTodos([todo, ...dailyTodos]);
       }
@@ -58,7 +61,11 @@ function TaskPage() {
       <Collapse>
             <CollapseHeader>
                   <Text>Daily Tasks</Text>
-                  <TodoForm addTodo={addDailyTodo} />
+                  {/* <TodoForm addTodo={addDailyTodo} /> */}
+                  <Icon 
+                    name = "add-task" 
+                    onPress = {() => navigation.navigate('AddTaskPage')}
+                    />
             </CollapseHeader>
             <CollapseBody>
               <TodoList
@@ -71,7 +78,11 @@ function TaskPage() {
         <Collapse>
               <CollapseHeader>
                   <Text>Weekly Tasks</Text>
-                  <TodoForm addTodo={addWeeklyTodo} />
+                  {/* <TodoForm addTodo={addWeeklyTodo} /> */}
+                  <Icon 
+                    name = "add-task" 
+                    onPress = {() => navigation.navigate('AddTaskPage')}
+                    />
               </CollapseHeader>
               <CollapseBody>
                 <TodoList
