@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Berater</h1>
+    <p>This is your home page :)</p>
+</body>
+</html>
+
+{% for post in posts %}
+<div>
+  <h2><a href="">{{ post.title }}</a></h2>
+  <p>published: {{ post.published_date }}</p>
+  <p>{{ post.text }}</p>
+</div>
+{% endfor %}
