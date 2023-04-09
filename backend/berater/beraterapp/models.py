@@ -23,7 +23,6 @@ class Insult(models.Model):
     insultIntensity = models.IntegerField()
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
@@ -38,7 +37,6 @@ class Task(models.Model):
     completed = models.BooleanField()
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
@@ -52,7 +50,6 @@ class User(models.Model):
     completed = models.BooleanField()
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
