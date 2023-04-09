@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/screens/LoginScreen'
-import TaskPage from './src/screens/TaskPage.js'
+import TaskPage2 from './src/screens/TaskPage.js'
 import AddTaskPage from './src/screens/AddTaskPage.js'
 
 const Stack = createNativeStackNavigator();

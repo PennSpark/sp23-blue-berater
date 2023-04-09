@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {SafeAreaView, View, Text, Button } from "react-native";
+import {SafeAreaView, View, Text, Button, ScrollView } from "react-native";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
@@ -13,11 +13,21 @@ function TaskPage() {
     const [weeklyTodos, setWeeklyTodos] = useState([]);
     const navigation = useNavigation();
 
-    function addDailyTodo(todo) {
+    function addDailyTodo() {
+        todo = {
+          id: "",
+          task: "",
+          completed: false,
+        };
         setDailyTodos([todo, ...dailyTodos]);
       }
     
-      function addWeeklyTodo(todo) {
+      function addWeeklyTodo() {
+        todo = {
+          id: "",
+          task: "",
+          completed: false,
+        };
         setWeeklyTodos([todo, ...weeklyTodos]);
       }
 
@@ -58,40 +68,30 @@ function TaskPage() {
   return (
     <SafeAreaView>
       <CurrentDate></CurrentDate>
-      <Collapse>
-            <CollapseHeader>
-                  <Text>Daily Tasks</Text>
-                  {/* <TodoForm addTodo={addDailyTodo} /> */}
-                  <Icon 
-                    name = "add-task" 
-                    onPress = {() => navigation.navigate('AddTaskPage')}
-                    />
-            </CollapseHeader>
-            <CollapseBody>
-              <TodoList
-                  todos={dailyTodos}
-                  removeTodo={removeDailyTodo}
-                  toggleComplete={toggleComplete}
-              />
-            </CollapseBody>
-        </Collapse>
-        <Collapse>
-              <CollapseHeader>
-                  <Text>Weekly Tasks</Text>
-                  {/* <TodoForm addTodo={addWeeklyTodo} /> */}
-                  <Icon 
-                    name = "add-task" 
-                    onPress = {() => navigation.navigate('AddTaskPage')}
-                    />
-              </CollapseHeader>
-              <CollapseBody>
-                <TodoList
-                    todos={weeklyTodos}
-                    removeTodo={removeWeeklyTodo}
-                    toggleComplete={toggleComplete}
-                />
-              </CollapseBody>
-      </Collapse>
+        <Text>Daily Tasks</Text>
+        <Icon 
+            name = "add-task" 
+            onPress = {addDailyTodo}
+        />
+        <ScrollView>
+            <TodoList
+                todos={dailyTodos}
+                removeTodo={removeDailyTodo}
+                toggleComplete={toggleComplete}
+            />
+        </ScrollView>
+        <Text>Weekly Tasks</Text>
+        <Icon 
+            name = "add-task" 
+            onPress = {addWeeklyTodo}
+        />
+        <ScrollView>
+            <TodoList
+                todos={weeklyTodos}
+                removeTodo={removeWeeklyTodo}
+                toggleComplete={toggleComplete}
+            />
+        </ScrollView>
     </SafeAreaView>
   );
 }
