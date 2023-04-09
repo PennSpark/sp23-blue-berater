@@ -19,6 +19,7 @@ class Post(models.Model):
 # author, insult text, intensity
 class Insult(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
     text = models.TextField(max_length=200)
     insultIntensity = models.IntegerField()
 
@@ -27,7 +28,7 @@ class Insult(models.Model):
 
     def __str__(self):
         return self.title
-    
+
 # author, task text, date/time, status (completed / incomplete), intensity
 class Task(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -48,9 +49,3 @@ class User(models.Model):
     userIntensity = models.TextField(max_length=200)
     dateTime = models.DateTimeField(default=timezone.now)
     completed = models.BooleanField()
-
-    def publish(self):
-        self.save()
-
-    def __str__(self):
-        return self.title

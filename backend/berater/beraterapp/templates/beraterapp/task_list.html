@@ -6,10 +6,18 @@
 </body>
 </html>
 
-{% for post in posts %}
+{% for task in tasks %}
 <div>
-  <h2><a href="">{{ post.title }}</a></h2>
-  <p>published: {{ post.published_date }}</p>
-  <p>{{ post.text }}</p>
+  <h2><a href="">{{ task.title }}</a></h2>
+  <p>date: {{ task.dateTime }}</p>
+  <p>{{ task.text }}</p>
+</div>
+{% endfor %}
+
+{% for insult in insults %}
+<div>
+  <h2><a href="">{{ insult.title }}</a></h2>
+  <p>author: {{ insult.author }}</p>
+  <p>{{ insult.text }}</p>
 </div>
 {% endfor %}

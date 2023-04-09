@@ -10,7 +10,11 @@ from beraterapp.serializers import UserSerializer, GroupSerializer
 def task_list(request):
     tasks = Task.objects.order_by('dateTime')
     return render(request, 'beraterapp/task_list.html', {'tasks': tasks})
-
+"""
+def insult_list(request):
+    insults = Insult.objects.order_by('title')
+    return render(request, 'beraterapp/task_list.html', {'insults' : insults})
+"""
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
