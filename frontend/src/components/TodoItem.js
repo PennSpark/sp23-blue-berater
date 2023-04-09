@@ -10,7 +10,19 @@ function TodoItem({ todo, toggleComplete, removeTodo }) {
     removeTodo(todo.id);
   }
 
+  function handleTitleClick() {
+    setEditing(true);
+  }
+
+  function handleTitleSubmit() {
+    setEditing(false);
+    todo.task = title;
+  }
+
   const [check, setCheck] = useState(false);
+  const [editing, editTitle] = useState(false);
+  const [title, setTitle] = useState(todo.task);
+
 
   return (
     <View>
@@ -18,10 +30,22 @@ function TodoItem({ todo, toggleComplete, removeTodo }) {
         <View/>
       </TouchableOpacity>
         <CheckBox 
-        title={todo.task}
+        // title={todo.task}
         checked={check}
         onPressIn={() => setCheck(!check)} 
         onPress = {handleRemoveClick} />
+        {editing ? (
+        <TextInput
+          value={title}
+          onChangeText={setTitle}
+          onSubmitEditing={handleTitleSubmit}
+          onBlur={handleTitleSubmit}
+        />
+      ) : (
+        <TouchableOpacity onPress={handleTitleClick}>
+          <Text>{title}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
