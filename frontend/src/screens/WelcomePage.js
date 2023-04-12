@@ -4,11 +4,13 @@ import InputField from '../components/InputField';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+
  import LoginScreen from './LoginScreen'
  import SignUpPage from './SignUpPage'
 
 
-export default function WelcomPage () {
+export default function WelcomPage ({ navigation }) {
 
     return (
         <View style={styles.container}>

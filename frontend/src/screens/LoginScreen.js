@@ -44,7 +44,12 @@ export default function LoginScreen () {
           }
           inputType="password"
         />
-     
+        <View style={styles.buttonContainer}>
+            <Button
+              title="Log In"
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </View>
     </View>
   )
 }

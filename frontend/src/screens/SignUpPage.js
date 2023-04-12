@@ -44,6 +44,13 @@ export default function SignUpPage () {
           }
           inputType="password"
         />
+        
+        <View style={styles.buttonContainer}>
+            <Button
+              title="Sign Up"
+              onPress={() => navigation.navigate('Profile')}
+            />
+          </View>
      
     </View>
   )

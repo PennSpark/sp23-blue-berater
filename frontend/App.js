@@ -7,6 +7,8 @@ import TaskPage from './src/screens/TaskPage.js'
 import AddTaskPage from './src/screens/AddTaskPage.js'
 import WelcomePage from './src/screens/WelcomePage.js'
 import SignUpPage from './src/screens/WelcomePage.js'
+import ProfilePage from './src/screens/ProfilePage.js'
+
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +22,7 @@ export default function App() {
         <Stack.Screen name="Add Task" component={AddTaskPage} />
         <Stack.Screen name="Welcome Page" component={WelcomePage} />
         <Stack.Screen name="Sign Up" component={SignUpPage} />
+        <Stack.Screen name="Profile" component={ProfilePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
