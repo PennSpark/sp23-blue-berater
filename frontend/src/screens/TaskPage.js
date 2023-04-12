@@ -3,7 +3,7 @@ import {SafeAreaView, View, Text, Button, ScrollView } from "react-native";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
-import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
+import { v4 as uuid } from "uuid";
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@rneui/themed';
 
@@ -15,7 +15,7 @@ function TaskPage() {
 
     function addDailyTodo() {
         todo = {
-          id: "",
+          id: uuid(),
           task: "",
           completed: false,
         };
@@ -24,7 +24,7 @@ function TaskPage() {
     
       function addWeeklyTodo() {
         todo = {
-          id: "",
+          id: uuid(),
           task: "",
           completed: false,
         };
