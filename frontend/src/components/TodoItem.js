@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { CheckBox } from '@rneui/themed';
 
 function TodoItem({ todo, toggleComplete, removeTodo }) {
@@ -20,7 +20,7 @@ function TodoItem({ todo, toggleComplete, removeTodo }) {
   }
 
   const [check, setCheck] = useState(false);
-  const [editing, editTitle] = useState(false);
+  const [editing, setEditing] = useState(true);
   const [title, setTitle] = useState(todo.task);
 
 
@@ -33,7 +33,8 @@ function TodoItem({ todo, toggleComplete, removeTodo }) {
         // title={todo.task}
         checked={check}
         onPressIn={() => setCheck(!check)} 
-        onPress = {handleRemoveClick} />
+        onPress = {handleRemoveClick} 
+        />
         {editing ? (
         <TextInput
           value={title}
