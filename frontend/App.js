@@ -5,16 +5,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/screens/LoginScreen'
 import TaskPage from './src/screens/TaskPage.js'
 import AddTaskPage from './src/screens/AddTaskPage.js'
+import HomePage from './src/screens/HomePage';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='TaskPage'>
+      <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="TaskPage" component={TaskPage} />
         <Stack.Screen name="AddTaskPage" component={AddTaskPage} />
+        <Stack.Screen name="Home" component={HomePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
