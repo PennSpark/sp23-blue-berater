@@ -6,6 +6,7 @@ import CurrentDate from "../components/CurrentDate";
 import { v4 as uuid } from "uuid";
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@rneui/themed';
+// import {PlusCircleOutlined} from '@ant-design/icons';
 
 
 function TaskPage() {
@@ -68,6 +69,7 @@ function TaskPage() {
   return (
     <SafeAreaView>
       <CurrentDate></CurrentDate>
+      {/* <PlusCircleOutlined /> */}
         <Text>Daily Tasks</Text>
         <Icon 
             name = "add-task" 
