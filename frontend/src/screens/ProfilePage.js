@@ -7,9 +7,7 @@ export default function ProfilePage() {
 
     return(
         <View style={styles.containter}>
-            <Text style={styles.data}>
-
-            </Text>
+            <Text style={styles.data}>Username: </Text>
         </View>
     );
 }
