@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, Button} from 'react-native';
 import InputField from '../components/InputField';
 import { Icon } from 'react-native-elements';
 
 
 
-export default function SignUpPage () {
+export default function SignUpPage ({navigation}) {
   return (
     <View style={{paddingHorizontal: 25}}>
         <Text
@@ -55,3 +55,12 @@ export default function SignUpPage () {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 40,
+  },
+});

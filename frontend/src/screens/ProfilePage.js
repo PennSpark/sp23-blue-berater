@@ -8,26 +8,18 @@ export default function ProfilePage() {
     return(
         <View style={styles.containter}>
             <Text style={styles.data}>Username: </Text>
-        </View>
-    );
-}
-
-return (
-        <View style={styles.container}>
-          <Text style={styles.title}>Welcome to BeRater</Text>
-          <Text style={styles.subtitle}>Please log in or sign up to continue</Text>
-          <View style={styles.buttonContainer}>
+            <Text style={styles.data}>BeRater Intensity: </Text>
+            <Text style={styles.data}>Successful Tasks: </Text>
+            <Text style={styles.data}>Unsuccessful Tasks: </Text>
+            <View style={styles.buttonContainer}>
             <Button
-              title="Log In"
-              onPress={() => navigation.navigate('Login')}
-            />
-            <Button
-              title="Sign Up"
-              onPress={() => navigation.navigate('Sign Up')}
+              title="Edit Settings"
+              onPress={() => navigation.navigate('Profile')}
             />
           </View>
         </View>
-      );
+    );
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -35,10 +27,10 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       padding: 20,
-      color: gray,
     },
     data: {
-      fontSize: 32,
+      flexDirection: 'row',
+      fontSize: 12,
       fontWeight: 'bold',
       marginBottom: 20,
     },

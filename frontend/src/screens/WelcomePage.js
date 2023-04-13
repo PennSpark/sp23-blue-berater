@@ -1,10 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
-import InputField from '../components/InputField';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
 
  import LoginScreen from './LoginScreen'
  import SignUpPage from './SignUpPage'
