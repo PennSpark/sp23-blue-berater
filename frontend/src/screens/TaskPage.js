@@ -80,7 +80,10 @@ function TaskPage() {
         <Text>Daily Tasks</Text>
         <AddButton 
           onPress = {addDailyTodo} />
-        <ScrollView>
+        <ScrollView
+          style={{ height: 200 }}
+          showsVerticalScrollIndicator={true}
+        >
             <TodoList
                 todos={dailyTodos}
                 removeTodo={removeDailyTodo}
