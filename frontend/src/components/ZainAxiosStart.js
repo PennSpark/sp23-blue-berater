@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function ZainAxiosStart({ addTodo }) {
+function ZainAxiosStart({ addTask }) {
 
-const uri = `https://1391-68-180-100-41.ngrok.io`;
+const uri = `https://ebd8-2607-f470-32-101-00-2e0f.ngrok.io`;
  
   // some app component as wrapper 
-    function addTodo() {
-      console.log(todo);
-      todoAPI.post('todos/create', {
-        todo_text: todo
+    function addTask() {
+      console.log(task);
+      taskAPI.post('beraterapp/views', {
+        task_text: task
       }).then(function(response) {
         console.log(response);
       })
