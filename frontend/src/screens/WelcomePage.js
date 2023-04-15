@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button, Modal, Alert, Pressable } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 

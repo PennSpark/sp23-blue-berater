@@ -3,8 +3,6 @@ import { Text, View, StyleSheet, Button } from 'react-native';
 import InputField from '../components/InputField';
 import { Icon } from 'react-native-elements';
 
-
-
 export default function LoginScreen ({navigation}) {
   return (
     <View style={{paddingHorizontal: 25}}>
@@ -47,13 +45,12 @@ export default function LoginScreen ({navigation}) {
         <View style={styles.buttonContainer}>
             <Button
               title="Log In"
-              onPress={() => navigation.navigate('Profile')}
+              onPress={() => navigation.navigate('Task Page')}
             />
           </View>
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   buttonContainer: {
