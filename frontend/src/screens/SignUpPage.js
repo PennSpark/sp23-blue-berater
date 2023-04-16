@@ -44,11 +44,13 @@ export default function SignUpPage ({navigation}) {
           }
           inputType="password"
         />
+
+        <Modal></Modal>
         
         <View style={styles.buttonContainer}>
             <Button
               title="Sign Up"
-              onPress={() => navigation.navigate('Profile')}
+              onPress={() => navigation.navigate('Home')}
             />
           </View>
      

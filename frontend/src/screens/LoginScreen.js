@@ -45,7 +45,7 @@ export default function LoginScreen ({navigation}) {
         <View style={styles.buttonContainer}>
             <Button
               title="Log In"
-              onPress={() => navigation.navigate('Task Page')}
+              onPress={() => navigation.navigate('Home')}
             />
           </View>
     </View>
