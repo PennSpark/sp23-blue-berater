@@ -3,10 +3,27 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout 
+from datetime import datetime
 from django.http import JsonResponse
 from .models import Task
 from .models import Insult
 import json
+
+def beraterapp_view(request):
+    if not request.user.is_authenticated:
+        return redirect('/splash/')
+    if request.method == 'POST' and request.POST['body'] != "":
+        task = Task.objects.create(
+            text = request.POST['text'],
+            author = request.user,
+            dateTime = datetime.now()
+        )
+        task.save()
+    tasks = Task.objects.all().order_by('-dateTime')
+    return render(request, 'beraterapp.html', {'tasks': tasks})
+
+def splash_view(request):
+    return render(request, 'splash.html' )
 
 def create_task(request):
     if request.method == 'POST':
@@ -48,9 +65,15 @@ def login_view(request):
         login(request, user) 
         return redirect('/') 
     else: 
-        return redirect('/')
+        return redirect('/splash?error=LoginError')
     
 def logout_view(request): 
     logout(request) 
+    return redirect('/')
+
+def delete_view(request):
+    task = Task.objects.get(id=request.GET['id'])
+    if Task.author == request.user:
+        task.delete()
     return redirect('/')
 

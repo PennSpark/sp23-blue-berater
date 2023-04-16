@@ -35,7 +35,7 @@ function TodoItem({ todo, toggleComplete, removeTodo }) {
         checked={check}
         onPressIn={() => setCheck(!check)} 
         onPress = {handleRemoveClick} 
-        titleStyle={{ display: 'none' }}
+        containerStyle = {{width: 50}}
         uncheckedIcon = 
           {<Svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <Rect width="30" height="30" rx="10" fill="#FFB8B8"/>
