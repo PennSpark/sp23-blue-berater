@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Svg, {Path, Defs, Circle, G, ClipPath, Rect} from 'react-native-svg';
 
 
-export default function ProfilePage() {
+export default function ProfilePage({navigation}) {
 
     return(
         <View style={styles.containter}>
@@ -36,7 +36,7 @@ export default function ProfilePage() {
             <View style={styles.buttonContainer}>
             <Button
               title="Edit Settings"
-              onPress={() => navigation.navigate('Profile')}
+              onPress={() => navigation.navigate('Settings')}
             />
           </View>
         </View>
