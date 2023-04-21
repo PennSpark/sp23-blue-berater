@@ -1,19 +1,49 @@
 import React, { useState } from "react";
-import {SafeAreaView, View, Text, Button, ScrollView } from "react-native";
+import {SafeAreaView, View, Text, Button, ScrollView, StyleSheet } from "react-native";
 import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import { useNavigation } from '@react-navigation/native';
 import Svg, {Path, Defs, Rect, G, ClipPath} from 'react-native-svg';
+import { useFonts } from '@expo-google-fonts/nunito';
 
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#F7F7F7",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  button: {
+    marginVertical: 10,
+  },
+  segmentedControl: {
+    width: 165,
+    height: 38,
+    marginVertical: 20,
+  },
+  svgContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+});
 
 function HomePage() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [dailyTodos, setDailyTodos] = useState([]);
     const [weeklyTodos, setWeeklyTodos] = useState([]);
     const navigation = useNavigation();
+
+    //LOOK AT CODE BELOW
+    // const [loaded] = useFonts({
+    //   Nunito: require('.../assets/fonts/Nunito-Medium.ttf'),
+    // });
+
+    // if (!loaded) {
+    //   return null;
+    // }
 
     const onChangeControl = (event) => {
         setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
@@ -73,7 +103,7 @@ function HomePage() {
 
   return (
     <SafeAreaView>
-      <CurrentDate></CurrentDate>
+      <CurrentDate />
       <View>
       <Svg width="342" height="315" viewBox="0 0 342 315" fill="none" xmlns="http://www.w3.org/2000/svg">
         <Rect x="2.5" y="2.5" width="337" height="310" rx="37.5" fill="#FF5A5F" stroke="black" stroke-width="5"/>
@@ -101,6 +131,14 @@ function HomePage() {
         values={['day', 'week']}
         selectedIndex={selectedIndex}
         onChange={onChangeControl}
+        style = {styles.segmentedControl}
+        tintColor = "#FFB8B8"
+        backgroundColor = "D9D9D9"
+        fontStyle = {{
+          color: 'black',
+          fontSize: 20,
+          fontFamily: 'Nunito',
+        }}
       />
         </View>
         <View>
