@@ -1,7 +1,15 @@
 from django.contrib import admin
-from .models import Insult, Task, User
+from .models import Task, Insult
 
-admin.site.register(Insult)
-admin.site.register(Task)
-admin.site.register(User)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'completed')
+class InsultAdmin(admin.ModelAdmin):
+    list_display = ('description', 'intensity')
+
+# Register your models here.
+admin.site.register(Task, TaskAdmin) 
+admin.site.register(Insult, InsultAdmin) 
+
+#admin.site.register(Insult)
+#admin.site.register(User)
 
