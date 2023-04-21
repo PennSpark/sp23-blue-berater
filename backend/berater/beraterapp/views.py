@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout 
 from rest_framework import viewsets
 from .serializers import TaskSerializer, InsultSerializer
 from .models import Task, Insult
@@ -11,15 +13,6 @@ class TaskView(viewsets.ModelViewSet):
 class InsultView(viewsets.ModelViewSet):
     serializer_class = InsultSerializer
     queryset = Insult.objects.all()
-
-"""
-class UserViewSet(viewsets.ModelViewSet):
-    # API endpoint that allows users to be viewed or edited.
-
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
 
 def signup_view(request): 
     user = User.objects.create_user( 
@@ -48,4 +41,3 @@ def delete_view(request):
     if Task.author == request.user:
         task.delete()
     return redirect('/')
-"""
