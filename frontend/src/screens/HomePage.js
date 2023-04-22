@@ -5,8 +5,13 @@ import CurrentDate from "../components/CurrentDate";
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import { useNavigation } from '@react-navigation/native';
 import Svg, {Path, Defs, Rect, G, ClipPath} from 'react-native-svg';
-import { useFonts } from '@expo-google-fonts/nunito';
-
+import AppLoading from 'expo-app-loading';
+import {
+  useFonts,
+  Nunito_500Medium,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+} from '@expo-google-fonts/nunito';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,11 +28,15 @@ const styles = StyleSheet.create({
     width: 165,
     height: 38,
     marginVertical: 20,
+    fontFamily: 'Nunito_500Medium'
   },
   svgContainer: {
     alignItems: "center",
     marginBottom: 20,
   },
+  text : {
+    fontFamily: 'Nunito_500Medium'
+  }
 });
 
 function HomePage() {
@@ -36,14 +45,19 @@ function HomePage() {
     const [weeklyTodos, setWeeklyTodos] = useState([]);
     const navigation = useNavigation();
 
-    //LOOK AT CODE BELOW
-    // const [loaded] = useFonts({
-    //   Nunito: require('.../assets/fonts/Nunito-Medium.ttf'),
-    // });
 
-    // if (!loaded) {
-    //   return null;
-    // }
+    let [fontsLoaded] = useFonts({
+      Nunito_500Medium,
+      Nunito_600SemiBold,
+      Nunito_700Bold,
+    });
+  
+    let fontSize = 24;
+    let paddingVertical = 6;
+  
+    if (!fontsLoaded) {
+      return <AppLoading />;
+    }
 
     const onChangeControl = (event) => {
         setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
@@ -137,14 +151,14 @@ function HomePage() {
         fontStyle = {{
           color: 'black',
           fontSize: 20,
-          fontFamily: 'Nunito',
+          fontFamily: 'Arial',
         }}
       />
         </View>
         <View>
         {selectedIndex == 0 ? (
         <View>
-            <Text>Daily todos here...</Text>
+            <Text >Daily todos here...</Text>
             <TodoList
             todos={dailyTodos}
             removeTodo={removeDailyTodo}
