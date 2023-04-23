@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   tasksAndButton : {
     flexDirection: 'row',
-    left: '6%',
+    left: '4%',
     top: '3%'
   },
   todoContainer : {

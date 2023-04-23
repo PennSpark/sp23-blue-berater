@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
 import LoginScreen from './src/screens/LoginScreen';
 import TaskPage from './src/screens/TaskPage.js';
 import HomePage from './src/screens/HomePage';
@@ -22,6 +20,14 @@ function TabNavigator() {
     <Tab.Navigator
       initialRouteName='Home'
       screenOptions={({ route }) => ({
+        tabBarStyle: {
+          backgroundColor: '#e8e8e8',
+          paddingTop: 20,
+      },
+        tabBarLabelStyle : {
+          paddingTop: 19,
+          paddingBottom: 0
+        },
         tabBarIcon: ({ color}) => {
           let icon;
           if (route.name === 'Home') {
@@ -47,6 +53,7 @@ function TabNavigator() {
           return icon;
         },
       })}
+      
       tabBarOptions={{
         activeTintColor: '#FF5A5F',
         inactiveTintColor: '#000000',
@@ -66,7 +73,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Welcome Page" component={WelcomePage} />
         <Stack.Screen name="Sign Up" component={SignUpPage} />
-        <Stack.Screen name="Settings" component={SettingsPage} />
+        <Stack.Screen name="Settings" component={SettingsPage} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
