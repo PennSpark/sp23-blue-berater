@@ -1,6 +1,7 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth import authenticate, login, logout
 from rest_framework import viewsets
 from .serializers import TaskSerializer, InsultSerializer
 from .models import Task, Insult
@@ -13,6 +14,26 @@ class TaskView(viewsets.ModelViewSet):
 class InsultView(viewsets.ModelViewSet):
     serializer_class = InsultSerializer
     queryset = Insult.objects.all()
+
+# Rest api endpoint
+def get_task_list(request):
+    """
+    Returns Json list of all restaurants
+    """
+    if request.method == "GET":
+        task_list = Task.objects.order_by('-completed')
+        serializer = TaskSerializer(task_list, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+# Rest api end point
+def get_insult_list(request):
+    """
+    Returns Json list of all restaurants
+    """
+    if request.method == "GET":
+        ins_list = Insult.objects.order_by('-completed')
+        serializer = InsultSerializer(ins_list, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
 def signup_view(request): 
     user = User.objects.create_user( 
