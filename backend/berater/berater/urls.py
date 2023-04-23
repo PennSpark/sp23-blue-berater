@@ -25,8 +25,5 @@ router.register(r'insults', views.InsultView, 'insult')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('login/', views.login_view, name='login_view'), 
-    path('signup/', views.signup_view, name='signup_view'), 
-    path('logout/', views.logout_view, name='logout_view'),
-
+    path('', include('beraterapp.urls')),
 ]
