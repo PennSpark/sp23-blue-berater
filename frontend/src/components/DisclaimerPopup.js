@@ -22,7 +22,6 @@ const Popup = ({ visible, onAccept, title, message, acceptText, cancelText }) =>
           <View style={{ backgroundColor: '#fff', padding: 20, width: 300, length : 500}}>
             {title && <Text style={{ fontSize: 20, fontWeight: 'bold', paddingBottom: 15}}>{title}</Text>}
             {message && <Text style={{paddingBottom: 15}}>{message}</Text>}
-
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 20 }}>
               <Button title={acceptButtonText} onPress={acceptPopup} />
             </View>
@@ -30,7 +29,7 @@ const Popup = ({ visible, onAccept, title, message, acceptText, cancelText }) =>
             style = {styles.continue}
             onPress={acceptPopup}
             >
-              <Text style = {styles.textButton}>CONTINUE</Text>
+              <Text style = {styles.textButton}>ACCEPT</Text>
           </Pressable>
           </View>
         </View>
