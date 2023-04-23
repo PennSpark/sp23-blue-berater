@@ -3,7 +3,7 @@ import {SafeAreaView, Text, ScrollView, TouchableOpacity, StyleSheet, View } fro
 import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
 import { v4 as uuid } from "uuid";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation} from '@react-navigation/native';
 import Svg, { Path } from 'react-native-svg';
 
 
@@ -59,6 +59,7 @@ function TaskPage() {
           completed: false,
         };
         setDailyTodos([todo, ...dailyTodos]);
+        navigation.setParams({ dailyTodos: [todo, ...dailyTodos] });
       }
     
       function addWeeklyTodo() {
@@ -68,6 +69,7 @@ function TaskPage() {
           completed: false,
         };
         setWeeklyTodos([todo, ...weeklyTodos]);
+        navigation.setParams({ weeklyTodos: [todo, ...weeklyTodos] });
       }
 
   function toggleComplete(id) {
