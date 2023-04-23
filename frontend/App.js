@@ -74,12 +74,13 @@ function TabNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Welcome Page'>
+      <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name= "Tab" component={TabNavigator} options={{ headerShown: false }}/>      
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Welcome Page" component={WelcomePage} />
         <Stack.Screen name="Sign Up" component={SignUpPage} />
         <Stack.Screen name="Disclaimer" component={DisclaimerPopup} />
+        <Stack.Screen name="Sign Up" component={SignUpPage} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={SettingsPage} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

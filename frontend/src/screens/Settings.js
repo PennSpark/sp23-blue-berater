@@ -20,11 +20,18 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     paddingBottom: 10
   },
-  textButton : {
+  textActiveButton : {
     fontFamily: 'Nunito_700Bold',
     fontSize: 16,
     color: 'white'
   },
+
+  textInactiveButton : {
+    fontFamily: 'Nunito_700Bold',
+    fontSize: 16,
+    color: 'black'
+  },
+
   textHeader : {
     fontFamily: 'Nunito_700Bold',
     fontSize: 26,
@@ -42,8 +49,19 @@ const styles = StyleSheet.create({
     padding: 15
   },
 
-  button : {
+  activeButton : {
     backgroundColor: "#FF6767",
+    width: 340,
+    height: 34,
+    borderRadius: 10,
+    justifyContent: 'center',
+    paddingLeft: 10,
+    alignSelf: "center",
+    margin: 4
+  },
+
+  inactiveButton : {
+    backgroundColor: "#D9D9D9",
     width: 340,
     height: 34,
     borderRadius: 10,
@@ -74,6 +92,16 @@ const styles = StyleSheet.create({
 function SettingsPage({navigation}) {
   const [textMulti, onChangeTextMulti] = React.useState('');
 
+  const [selectedButton, setSelectedButton] = useState(1);
+  const handlePress = (buttonNumber) => {
+    setSelectedButton(buttonNumber);
+  };
+
+  const [selectedAvatar, setSelectedAvatar] = useState(1);
+  const handlePressAvatar = (avatarNumber) => {
+    setSelectedAvatar(avatarNumber);
+  };
+
   return (
    <SafeAreaView style = {styles.container}>
     <View style = {styles.header}>
@@ -86,16 +114,21 @@ function SettingsPage({navigation}) {
     </View>
     <Text style = {styles.textBold}>BeRater Intensity:</Text>
     <Pressable 
-      style = {styles.button}>
-          <Text style = {styles.textButton}>Level 1: Gentle disappointed nudging</Text>
+      style={selectedButton === 1 ? styles.activeButton : styles.inactiveButton}
+      onPress={() => handlePress(1)}>
+          <Text 
+          style={selectedButton === 1 ? styles.textActiveButton : styles.textInactiveButton}>
+            Level 1: Gentle disappointed nudging</Text>
       </Pressable> 
     <Pressable 
-    style = {styles.button}>
-        <Text style = {styles.textButton}>Level 2: Roasts and insults, no swears</Text>
+    style={selectedButton === 2 ? styles.activeButton : styles.inactiveButton}
+    onPress={() => handlePress(2)}>
+        <Text style={selectedButton === 2 ? styles.textActiveButton : styles.textInactiveButton}>Level 2: Roasts and insults, no swears</Text>
     </Pressable>
     <Pressable 
-    style = {styles.button}>
-        <Text style = {styles.textButton}>Level 3: Harsher insults with swearing</Text>
+    style={selectedButton === 3 ? styles.activeButton : styles.inactiveButton}
+    onPress={() => handlePress(3)}>
+        <Text style={selectedButton === 3 ? styles.textActiveButton : styles.textInactiveButton}>Level 3: Harsher insults with swearing</Text>
     </Pressable>
     <Text style = {styles.textBold}>Personalize Insults:</Text>
     <TextInput
@@ -110,7 +143,7 @@ function SettingsPage({navigation}) {
     />
     <Pressable 
     style = {styles.submit}>
-        <Text style = {styles.textButton}>Submit Insult</Text>
+        <Text style = {styles.textActiveButton}>Submit Insult</Text>
     </Pressable>
     <Text style = {styles.textBold}>Select Berater:</Text>
     <View style = {styles.avatars}>
