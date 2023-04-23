@@ -5,7 +5,7 @@ import CurrentDate from "../components/CurrentDate";
 import { v4 as uuid } from "uuid";
 import { useNavigation} from '@react-navigation/native';
 import Svg, { Path } from 'react-native-svg';
-
+import ZainAxiosStart from "../components/ZainAxiosStart";
 
 const styles = StyleSheet.create({
   container: {
@@ -114,6 +114,7 @@ function TaskPage() {
           <AddButton 
             onPress = {addDailyTodo} />
         </View>
+        <ZainAxiosStart></ZainAxiosStart>
         <ScrollView
           style={styles.todoContainer}
           showsVerticalScrollIndicator={true}
