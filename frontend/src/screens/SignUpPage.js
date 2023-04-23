@@ -1,13 +1,21 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button} from 'react-native';
+import { Text, View, StyleSheet, Button, useState, TouchableOpacity} from 'react-native';
 import InputField from '../components/InputField';
 import { Icon } from 'react-native-elements';
+import DisclaimerPopup from '../components/DisclaimerPopup';
 
 
-
-export default function SignUpPage ({navigation}) {
+function SignUpPage ({navigation}) {
   return (
+
     <View style={{paddingHorizontal: 25}}>
+      <DisclaimerPopup
+        visible={true}
+      //  onAccept={acceptPopup}
+        title="Disclaimer"
+        message="BeRater is an non-profit app reliant on harsh and possibly mentally scarring insults in order to motivate users into being more productive. Penn Spark and the members of the BeRater team do not take any responsibility for any mental, physical, or emotional trauma incurred by the use of this app. Please be advised that there may be swears and cursing beyond your ability to handle. Users of this app must be 18+ years of age."
+      />
+      
         <Text
           style={{
             fontFamily: 'Roboto-Medium',
@@ -43,10 +51,7 @@ export default function SignUpPage ({navigation}) {
           />
           }
           inputType="password"
-        />
-
-        <Modal></Modal>
-        
+        />        
         <View style={styles.buttonContainer}>
             <Button
               title="Sign Up"
@@ -66,3 +71,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
 });
+
+export default SignUpPage;

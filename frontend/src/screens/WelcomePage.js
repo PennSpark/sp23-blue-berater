@@ -3,8 +3,10 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button, Mod
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
- import LoginScreen from './LoginScreen'
- import SignUpPage from './SignUpPage'
+import LoginScreen from './LoginScreen';
+import SignUpPage from './SignUpPage';
+import DisclaimerPopup from '../components/DisclaimerPopup';
+
 
 
 export default function WelcomPage ({ navigation }) {
