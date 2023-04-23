@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button, SafeAreaView } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 //import Svg, { Path, Rect, Defs, ClipPath} from 'react-native-svg';
@@ -9,7 +9,7 @@ import Svg, {Path, Defs, Circle, G, ClipPath, Rect} from 'react-native-svg';
 export default function ProfilePage({navigation}) {
 
     return(
-        <View style={styles.containter}>
+        <SafeAreaView style={styles.containter}>
             <Text style={styles.data}>Username: </Text>
             <Text style={styles.data}>BeRater Intensity: </Text>
             <Text style={styles.data}>Successful Tasks: </Text>
@@ -20,7 +20,7 @@ export default function ProfilePage({navigation}) {
               onPress={() => navigation.navigate('Settings')}
             />
           </View>
-        </View>
+        </SafeAreaView>
     );
   }
 
