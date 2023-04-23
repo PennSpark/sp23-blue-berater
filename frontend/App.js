@@ -51,9 +51,9 @@ function TabNavigator() {
         activeTintColor: '#FF5A5F',
         inactiveTintColor: '#000000',
       }}>
-      <Tab.Screen name="Profile" component={ProfilePage} />
-      <Tab.Screen name="Home" component={HomePage} />
-      <Tab.Screen name="Tasks" component={TaskPage} />
+      <Tab.Screen name="Profile" component={ProfilePage} options={{ headerShown: false }}/>
+      <Tab.Screen name="Home" component={HomePage} options={{ headerShown: false }}/>
+      <Tab.Screen name="Tasks" component={TaskPage} options={{ headerShown: false }}/>
     </Tab.Navigator>
   );
 }

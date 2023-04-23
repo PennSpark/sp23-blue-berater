@@ -1,11 +1,41 @@
 import React, { useState } from "react";
-import {SafeAreaView, Text, ScrollView, TouchableOpacity } from "react-native";
+import {SafeAreaView, Text, ScrollView, TouchableOpacity, StyleSheet, View } from "react-native";
 import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
 import { v4 as uuid } from "uuid";
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Path } from 'react-native-svg';
 
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    flex: 1
+  },
+  textMedium : {
+    fontFamily: 'Nunito_500Medium'
+  },
+  textBold : {
+    fontFamily: 'Nunito_700Bold',
+    fontSize: 24,
+    textDecorationLine: "underline",
+    marginRight: 10
+  },
+  tasksAndButton : {
+    flexDirection: 'row',
+    left: '6%',
+    top: '3%'
+  },
+  todoContainer : {
+    backgroundColor: "#D9D9D999",
+    borderRadius: 10,
+    width: 337,
+    height: 200,
+    alignSelf: "center",
+    showsVerticalScrollIndicator: true,
+    marginBottom: 15
+  }
+});
 
 function TaskPage() {
     const [dailyTodos, setDailyTodos] = useState([]);
@@ -75,13 +105,15 @@ function TaskPage() {
   }
 
   return (
-    <SafeAreaView>
-      <CurrentDate></CurrentDate>
-        <Text>Daily Tasks</Text>
-        <AddButton 
-          onPress = {addDailyTodo} />
+    <SafeAreaView style = {styles.container}>
+      <CurrentDate isHomePage={false}/>
+        <View style = {styles.tasksAndButton}>
+          <Text style = {styles.textBold}>Daily Tasks</Text>
+          <AddButton 
+            onPress = {addDailyTodo} />
+        </View>
         <ScrollView
-          style={{ height: 200 }}
+          style={styles.todoContainer}
           showsVerticalScrollIndicator={true}
         >
             <TodoList
@@ -90,10 +122,12 @@ function TaskPage() {
                 toggleComplete={toggleComplete}
             />
         </ScrollView>
-        <Text>Weekly Tasks</Text>
-        <AddButton 
-          onPress = {addWeeklyTodo} />
-        <ScrollView>
+        <View style = {styles.tasksAndButton}>
+          <Text style = {styles.textBold}>Weekly Tasks</Text>
+          <AddButton 
+            onPress = {addWeeklyTodo} />
+        </View>
+        <ScrollView style = {styles.todoContainer}>
             <TodoList
                 todos={weeklyTodos}
                 removeTodo={removeWeeklyTodo}
