@@ -59,7 +59,12 @@ function TabNavigator() {
         inactiveTintColor: '#000000',
       }}>
       <Tab.Screen name="Profile" component={ProfilePage} options={{ headerShown: false }}/>
-      <Tab.Screen name="Home" component={HomePage} options={{ headerShown: false }}/>
+      <Tab.Screen 
+        name="Home" 
+        component={HomePage} 
+        options={{ headerShown: false }}
+        initialParams={{ dailyTodos: [], weeklyTodos: [] }}
+        />
       <Tab.Screen name="Tasks" component={TaskPage} options={{ headerShown: false }}/>
     </Tab.Navigator>
   );

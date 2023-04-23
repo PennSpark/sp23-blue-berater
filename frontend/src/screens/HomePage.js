@@ -4,6 +4,7 @@ import TodoList from "../components/TodoList";
 import CurrentDate from "../components/CurrentDate";
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import Svg, {Path, Defs, Rect, G, ClipPath} from 'react-native-svg';
+import {useRoute} from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import {
   useFonts,
@@ -35,6 +36,16 @@ const styles = StyleSheet.create({
   textBold : {
     fontFamily: 'Nunito_700Bold',
     fontSize: 24
+  },
+
+  todoContainer : {
+    backgroundColor: "#D9D9D999",
+    borderRadius: 10,
+    width: 337,
+    height: 200,
+    alignSelf: "center",
+    showsVerticalScrollIndicator: true,
+    marginBottom: 15
   }
 });
 
@@ -42,7 +53,7 @@ function HomePage() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [dailyTodos, setDailyTodos] = useState([]);
     const [weeklyTodos, setWeeklyTodos] = useState([]);
-
+    
     let [fontsLoaded] = useFonts({
       Nunito_500Medium,
       Nunito_700Bold,
@@ -132,7 +143,7 @@ function HomePage() {
         </View>
         </View>
         {selectedIndex == 0 ? (
-        <View style = {styles.container}>
+        <View style = {styles.todoContainer}>
             <Text style = {styles.textMedium}>Daily todos here...</Text>
             <TodoList
             todos={dailyTodos}
@@ -141,7 +152,7 @@ function HomePage() {
             />
         </View>
       ) : (
-        <View style = {styles.container}>
+        <View style = {styles.todoContainer}>
             <Text style = {styles.textMedium}>Weekly todos here...</Text>
             <TodoList
             todos={weeklyTodos}
