@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, SafeAreaView, View, StyleSheet, Pressable, TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet, Button, useState, TouchableOpacity, SafeAreaView, Pressable} from 'react-native';
 import InputField from '../components/InputField';
+import { Icon } from 'react-native-elements';
+import DisclaimerPopup from '../components/DisclaimerPopup';
 import Svg, {Path, Defs, G, ClipPath, Rect} from 'react-native-svg';
 
 
-
-export default function SignUpPage ({navigation}) {
+function SignUpPage ({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
         <Svg style = {styles.svgStyle} width="250" height="250" viewBox="0 0 155 157" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,6 +28,13 @@ export default function SignUpPage ({navigation}) {
           </ClipPath>
           </Defs>
         </Svg>
+        <View>
+          <DisclaimerPopup
+          visible={true}
+          title="Disclaimer"
+          message="BeRater is an non-profit app reliant on harsh and possibly mentally scarring insults in order to motivate users into being more productive. Penn Spark and the members of the BeRater team do not take any responsibility for any mental, physical, or emotional trauma incurred by the use of this app. Please be advised that there may be swears and cursing beyond your ability to handle. Users of this app must be 18+ years of age."
+        />
+        </View>
         <View style = {styles.options}>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style = {styles.textBold}>SIGN IN</Text>
@@ -129,3 +137,5 @@ const styles = StyleSheet.create({
   }, 
   
 });
+
+export default SignUpPage;

@@ -9,6 +9,7 @@ import WelcomePage from './src/screens/WelcomePage.js';
 import SignUpPage from './src/screens/SignUpPage.js';
 import ProfilePage from './src/screens/ProfilePage.js';
 import SettingsPage from './src/screens/Settings';
+import DisclaimerPopup from './src/components/DisclaimerPopup';
 import Svg, {Path} from 'react-native-svg';
 
 
@@ -77,6 +78,7 @@ export default function App() {
         <Stack.Screen name= "Tab" component={TabNavigator} options={{ headerShown: false }}/>      
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Welcome Page" component={WelcomePage} />
+        <Stack.Screen name="Disclaimer" component={DisclaimerPopup} />
         <Stack.Screen name="Sign Up" component={SignUpPage} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={SettingsPage} options={{ headerShown: false }} />
       </Stack.Navigator>
