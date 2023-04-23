@@ -1,65 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Button, Text } from "react-native";
+import axios from 'axios';
 
-function ZainAxiosStart({ addTask }) {
+function ZainAxiosStart({}) {
 
-const uri = `https://ebd8-2607-f470-32-101-00-2e0f.ngrok.io`;
- 
-const [task, addTask] = useState(null);
-const [insult, addInsult] = useState(null);
-const [taskG, getTask] = useState(null);
-const [insultG, getInsult] = useState(null);
+  const uri = `https://dfaa-68-180-100-26.ngrok.io`;
 
-  // some app component as wrapper 
-  function addTask() {
-    console.log(task);
-    taskAPI.post('beraterapp/views', {
-      task_text: task
-    }).then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
-  }
-  
-  function addInsult() {
-    console.log(insult);
-    insultAPI.post('beraterapp/views', {
-      insult_text: insult
-    }).then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
-  }
+  const [taskData, setTaskData] = useState([]);
+  const [insultData, setInsultData] = useState([]);
 
-  function getTask() {
-    console.log(insult);
-    taskAPI.get('beraterapp/views', {
-      task_text: taskG
-    }).then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
-  }
 
-  function getInsult() {
-    console.log(insult);
-    insultAPI.get('beraterapp/views', {
-      insult_text: insultG
-    }).then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
-  }
-} 
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(`${uri}/get_tasks`);
+      setTaskData(result.data);
+    };
+    fetchData();
+  }, []);
 
-export const ZainAxiosStart = axios.create({
-    baseURL: uri,
-    timeout: 1000,
-  });
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(`${uri}/get_insults`);
+      setTaskData(result.data);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <Button onPress={() => console.log(taskData)} title="Get Tasks" />
+  );
+}
+
+export default ZainAxiosStart;
